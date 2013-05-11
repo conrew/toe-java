@@ -1,0 +1,17 @@
+package TickTacToe;
+
+/**
+ * TickTacToe - Game
+ * 
+ * Feld Variablen:
+ * 0 - Leer
+ * 1 - Kreis
+ * 2 - Kreuz
+ * Aufbau:
+ * 
+ */
+public class Game {
+
+	
+	
+}

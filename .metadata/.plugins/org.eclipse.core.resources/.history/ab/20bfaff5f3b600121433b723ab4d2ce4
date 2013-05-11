@@ -1,0 +1,25 @@
+package game2;
+
+public interface I_Toe_Game {
+
+	public boolean 	doturn(int FieldID);
+	
+	public boolean 	NewGame();
+	public boolean	NewGame(int GameID);
+	
+	public boolean	LoadGame();
+	
+	public boolean	SaveGame();
+	
+	public int 		getGameState();
+	public int		getCurrentPlayer();
+	
+	//Variables
+	int GameState = 4;
+	int CurrentPlayer = 0;
+	int GameID = 0;
+	int Turns = 0;
+	
+	int[] field = {0,0,0,0,0,0,0,0,0};
+	
+}

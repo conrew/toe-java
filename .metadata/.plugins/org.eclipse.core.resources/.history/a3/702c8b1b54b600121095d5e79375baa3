@@ -1,0 +1,60 @@
+package game;
+
+
+public class CGame implements Game{
+	int GameState;
+	int CurrentPlayer;
+	byte[] field = new byte[9];
+	
+
+	public byte getFieldValue() {
+		 
+		return 0;
+	}
+
+	public void setFieldValue() {
+		 
+		
+	}
+
+	public void InterruptGame() {
+		 
+		
+	}
+
+	public boolean NewGame() {
+		boolean error = false;
+		//Array erstellen , GameState ändern
+		try{
+		if(GameState == 4){
+			//Feld befüllen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			GameState = 0;
+		}}catch(Exception e){return error;}
+		return true;
+	}
+
+	public boolean LoadGame() {
+		 
+		return false;
+	}
+
+	public boolean SaveGame() {
+		 
+		return false;
+	}
+
+	public int getCurrentPlayer() {
+		 
+		return 0;
+	}
+
+	public int getGameState() {
+		 
+		return 0;
+	}
+
+	
+}

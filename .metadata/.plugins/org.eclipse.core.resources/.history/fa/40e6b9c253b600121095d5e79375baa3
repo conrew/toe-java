@@ -1,0 +1,14 @@
+package game;
+
+public class test {
+
+	public static void main(String[] args) {
+		int l = 0;
+		while(l < 20){
+		int i = (int)(Math.random()*2 + 1);
+		System.out.println(i);
+		l++;
+		}
+	}
+
+}

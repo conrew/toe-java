@@ -1,0 +1,176 @@
+package game2;
+
+public class C_Toe_Game implements I_Toe_Game{
+	
+	//Variables
+	private int GameState = 4;
+	private int CurrentPlayer = 0;
+	@SuppressWarnings("unused")
+	private int GameID = 1000;
+	private int Turns = 0;
+	
+	private boolean playable = false;
+	
+	private long TimeStart = 0;
+	private long TimeEnd	= 0;
+	private long PlayTime = TimeEnd - TimeStart;
+	
+	private int[] field = {0,0,0,0,0,0,0,0,0};
+	
+	public C_Toe_Game(){
+		System.out.println("C_Toe_Game aufgerufen");
+	}
+	
+	//Methoden
+	
+	public boolean doTurn(int FieldID) { //Erledigt	
+		if(playable){
+		switch(FieldID -1){
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+			break;
+		default:
+			System.out.println("Error");
+			return false;
+		}
+		switch(CurrentPlayer){
+		case 1:
+			field[FieldID -1] = 1;
+			CurrentPlayer = 2;
+			System.out.println("\t\tPlayer "+ CurrentPlayer +" done Turn");
+			update();
+			return true;
+		case 2:
+			field[FieldID -1] = 2;
+			CurrentPlayer = 1;
+			System.out.println("\t\tPlayer " + CurrentPlayer + " done Turn");
+			update();
+			return true;
+		default:
+			System.out.println("Turn ended uncorrectly");
+			return false;
+		}
+		}else{return false;}
+		
+	}
+	
+	private void update(){
+		//Spieler 1
+		if(field[0] == 1 && field[1] == 1 && field[2] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[0] == 1 && field[3] == 1 && field[6] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[0] == 1 && field[4] == 1 && field[8] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[2] == 1 && field[5] == 1 && field[8] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[2] == 1 && field[4] == 1 && field[6] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[3] == 1 && field[4] == 1 && field[5] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[6] == 1 && field[7] == 1 && field[8] == 1){GameState = 1;System.out.println("P1 Win!");}
+		if(field[1] == 1 && field[4] == 1 && field[7] == 1){GameState = 1;System.out.println("P1 Win!");}
+		
+		//Spieler 2
+		if(field[0] == 2 && field[1] == 2 && field[2] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[0] == 2 && field[3] == 2 && field[6] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[0] == 2 && field[4] == 2 && field[8] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[2] == 2 && field[5] == 2 && field[8] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[2] == 2 && field[4] == 2 && field[6] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[3] == 2 && field[4] == 2 && field[5] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[6] == 2 && field[7] == 2 && field[8] == 2){GameState = 2;System.out.println("P2 Win!");}
+		if(field[1] == 2 && field[4] == 2 && field[7] == 2){GameState = 2;System.out.println("P2 Win!");}
+		
+		switch(GameState){
+		case 1:
+		case 2:
+		case 3:
+			playable = false;
+			break;
+		default:
+			
+		
+		}
+	}
+	
+	public boolean revokeTurn(int FieldID) {	
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Create New Game
+	public boolean NewGame() { //Erledigt
+		if(playable = false){
+		switch(GameState){
+		case 4:				//Kein Spiel
+		case 2:				//Spieler 2 gewinnt
+		case 1:				//Spieler 1 gewinnt
+		case 3:				//Unentschieden
+			
+			//Feld zurücksetzen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			
+			//Zufalls zahlen
+			CurrentPlayer = (int)(Math.random()*2 + 1);
+			GameID = (int)(Math.random()*1000 + 1);
+			TimeStart = System.currentTimeMillis();
+			playable = true;
+			return true;
+			
+		default:
+			System.out.println("Game could not be created! Error");
+			return false;
+		}
+		}else{return false;}
+	}
+
+	
+	public boolean NewGame(int GameIDU) { //Erledigt
+		if(playable = false){
+		switch(GameState){
+		case 4:				//Kein Spiel
+		case 2:				//Spieler 2 gewinnt
+		case 1:				//Spieler 1 gewinnt
+		case 3:				//Unentschieden
+			
+			//Feld zurücksetzen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			
+			//Zufalls zahlen
+			CurrentPlayer = (int)(Math.random()*2 + 1);
+			GameID = GameIDU;
+			TimeStart = System.currentTimeMillis();
+			playable = true;
+			return true;
+			
+		default:
+			System.out.println("Game could not be created! Error");
+			return false;
+		}}else{return false;}
+	}
+
+	//Load a Game
+	public boolean LoadGame() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Save a Game
+	public boolean SaveGame() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Get Methoden - Erledigt
+	public int getGameState() {return GameState;}
+	public int getCurrentPlayer() {return CurrentPlayer;}
+	public int getTurns() {return Turns;}
+	public float getPlayTime() {return PlayTime;}
+	public int[] getField() {return field;}
+
+}

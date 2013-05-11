@@ -1,0 +1,29 @@
+package TickTacToe;
+
+public class Field {
+	
+	//Array holding the Field Values
+	private byte[] afield = {0,0,0,0,0,0,0,0,0};
+	
+	//Returning a specific Value of the Field
+	public byte getFieldValue(int field){
+		
+			return afield[field - 1];
+	}
+	
+	//Set a specific Field with the Value
+	public void setFieldValue(int field , int value){
+		afield[field] = (byte) value;
+		boolean up = update();
+	}
+	
+	public boolean update(){
+		try{
+			
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
+	
+}

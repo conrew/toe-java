@@ -1,0 +1,16 @@
+package TickTacToe;
+
+public class Main {
+
+	/**
+	 * TickTacToe - Main
+	 * 
+	 * Aufgaben:
+	 * 
+	 */
+	public static void main(String[] args) {
+	
+
+	}
+
+}

@@ -1,0 +1,30 @@
+package game;
+
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		System.out.println("TicTacToe - Debug Console");
+		
+		CGame tac = new CGame();
+		System.out.println("TicTacToe Class created");
+		Scanner scan = new Scanner(System.in);
+		System.out.println("<Waiting for Commands - Enter help for Command List>");
+		if(scan.next().equals("help")){
+			System.out.println("HELP - Command List:");
+			System.out.println("new    - Neues Spiel emulieren");
+			System.out.println("place  - Einen Zug machen (Als CurrentPlayer");
+			System.out.println("abort  - Das Spiel beenden (force)");
+			System.out.println("gamestate - Den Spielstatus anzeigen");
+			System.out.println("current   - Den Aktuellen Player anzeigen");
+		}
+		String command = scan.next();
+		if(command.equals("new")){tac.NewGame();System.out.println("New Game Created!");}
+		if(command.equals("place")){tac.setFieldValue(1) ;System.out.println("Placed Succesfully");}
+		if(command.equals("abort")){tac.InterruptGame() ;System.out.println("Dont Work yet!");}
+		if(command.equals("gamestate")){System.out.println("GameState: "+tac.getGameState());}
+		if(command.equals("current")){System.out.println("Current: " + tac.getCurrentPlayer());}
+	}
+
+}

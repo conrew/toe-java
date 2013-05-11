@@ -1,0 +1,129 @@
+package gui;
+
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.opengl.Texture;
+
+public class gui_main extends BasicGame {
+	Image bg_image = null;
+	
+	float i = 0;
+	
+	//Felder
+	Image feld_1 = null;
+	Image feld_2 = null;
+	Image feld_3 = null;
+	Image feld_4 = null;
+	Image feld_5 = null;
+	Image feld_6 = null;
+	Image feld_7 = null;
+	Image feld_8 = null;
+	Image feld_9 = null;
+	
+	//Felder Status
+	int feld_1_stat = 1;
+	int feld_2_stat = 1;
+	int feld_3_stat = 1;
+	int feld_4_stat = 1;
+	int feld_5_stat = 1;
+	int feld_6_stat = 1;
+	int feld_7_stat = 1;
+	int feld_8_stat = 1;
+	int feld_9_stat = 1;
+	
+	//Felder größen
+	int feld_1_gx = 100, feld_1_gy = 100;
+	//Bilder
+	Image kreis = null;
+	Image kreuz = null;
+	Image field_default = null;
+	
+	
+	
+	public gui_main(){
+		super("TicTacToe - Spiel");
+	}
+	
+	
+	public static void main(String[] args) throws SlickException{
+		
+		AppGameContainer gwindow = new AppGameContainer(new gui_main());
+		gwindow.setDisplayMode(800, 600, false);
+		gwindow.start();
+
+	}
+
+	@Override
+	public boolean closeRequested() {
+		System.exit(0);
+		return false;
+	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void init(GameContainer arg0) throws SlickException {
+		//Aussehen default
+		bg_image = new Image("images/ttt_bg.png");
+		kreis = new Image("images/ttt_kreis.png");
+		kreuz = new Image("images/ttt_kreuze.png");
+		field_default = new Image("images/default.png");
+		
+		//Felder default
+		feld_1 = field_default.copy();
+		feld_2 = field_default.copy();
+		feld_3 = field_default.copy();
+		feld_4 = field_default.copy();
+		feld_5 = field_default.copy();
+		feld_6 = field_default.copy();
+		feld_7 = field_default.copy();
+		feld_8 = field_default.copy();
+		feld_9 = field_default.copy();
+	}
+
+	@Override
+	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
+		bg_image.draw(0,0 , 800 , 600);
+		
+		//Felder positionen
+		feld_1.draw(250,150,feld_1_gx,feld_1_gy);
+		feld_2.draw(352,150);
+		feld_3.draw(454,150);
+		
+		feld_4.draw(250,252);
+		feld_5.draw(352,252);
+		feld_6.draw(454,252);
+		
+		feld_7.draw(250,354);
+		feld_8.draw(352,354);
+		feld_9.draw(454,354);
+	}
+
+	@Override
+	public void update(GameContainer gc, int delta) throws SlickException {
+		Input input = gc.getInput();
+		
+		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)) {
+			if(input.getMouseX() > 250 && input.getMouseY() < 352){
+				if(input.getMouseY() > 150 && input.getMouseX() < 250){
+					//feld_1 = kreis;
+					System.out.println("lololol");
+					
+				}
+			}
+        }
+		feld_1.rotate((float) 0.56);
+		if(feld_1_gx > 50 && feld_1_gy > 50 ){
+			feld_1_gx--;
+			feld_1_gy--;
+		}	
+}
+	}

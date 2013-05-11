@@ -1,0 +1,102 @@
+package game;
+
+
+public class CGame implements Game{
+	int GameState = 4;
+	int CurrentPlayer;
+	byte[] field = new byte[9];
+	
+
+	public byte getFieldValue(int fieldnum) {
+		 
+		return field[fieldnum];
+	}
+
+	public void setFieldValue(int fieldnum) {
+		switch(CurrentPlayer){
+		case 1:
+			field[fieldnum] = 1;
+			CurrentPlayer = 2;
+			checkWin();
+			break;
+		case 2:
+			field[fieldnum] = 2;
+			CurrentPlayer = 1;
+			checkWin();
+			break;
+		}
+	}
+
+	public void InterruptGame() {
+		 
+		
+	}
+
+	public boolean NewGame() {
+		boolean error = false;
+		//Array erstellen , CurrentPlayer , GameState ändern
+		try{
+		if(GameState == 4){
+			//Feld befüllen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			//Zufall generation des AnfangsSpielers
+			CurrentPlayer = (int)(Math.random()*2 + 1);
+			GameState = 0;
+		}else{return error;}
+		}catch(Exception e){return error;}
+		return true;
+	}
+
+	public boolean LoadGame() {
+		 
+		return false;
+	}
+
+	public boolean SaveGame() {
+		 
+		return false;
+	}
+
+	public int getCurrentPlayer() {
+		 
+		return CurrentPlayer;
+	}
+
+	public int getGameState() {
+		 
+		return 0;
+	}
+
+
+	private void checkWin() {
+		
+	//Spieler 1
+	if(field[0] == 1 && field[1] == 1 &&  field[2] == 1){GameState = 1;}
+	if(field[0] == 1 && field[3] == 1 && field[6] == 1){GameState = 1;}
+	if(field[0] == 1 && field[4] == 1 && field[8] == 1){GameState = 1;}
+	if(field[2] == 1 && field[5] == 1 && field[8] == 1){GameState = 1;}
+	if(field[2] == 1 && field[4] == 1 && field[6] == 1){GameState = 1;}
+	if(field[3] == 1 && field[4] == 1 && field[5] == 1){GameState = 1;}
+	if(field[6] == 1 && field[7] == 1 && field[8] == 1){GameState = 1;}
+	if(field[1] == 1 && field[4] == 1 && field[7] == 1){GameState = 1;}
+	
+	//Spieler 2
+	if(field[0] == 2 && field[1] == 2 && field[2] == 2){GameState = 2;}
+	if(field[0] == 2 && field[3] == 2 && field[6] == 2){GameState = 2;}
+	if(field[0] == 2 && field[4] == 2 && field[8] == 2){GameState = 2;}
+	if(field[2] == 2 && field[5] == 2 && field[8] == 2){GameState = 2;}
+	if(field[2] == 2 && field[4] == 2 && field[6] == 2){GameState = 2;}
+	if(field[3] == 2 && field[4] == 2 && field[5] == 2){GameState = 2;}
+	if(field[6] == 2 && field[7] == 2 && field[8] == 2){GameState = 2;}
+	if(field[1] == 2 && field[4] == 2 && field[7] == 2){GameState = 2;}
+	
+	
+	
+	}
+
+
+
+	
+}

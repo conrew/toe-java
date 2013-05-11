@@ -1,0 +1,24 @@
+package game2;
+
+import java.util.Scanner;
+
+public class Toe_Console {
+
+	public static void main(String[] args) {
+		Scanner	scan = new Scanner(System.in);
+		System.out.println("\t\t___________________________");
+		System.out.println("\t\t|--Tic Tac Toe | Console--|");
+		System.out.println("\t\t|⁂©©©©©©©©©©©©©©©©©©©©©©©©|");
+		System.out.println("\t\t|--------Commands---------|");
+		System.out.println("\t\t|---1----------New Game---|");
+		System.out.println("\t\t|---2----------Do Turn----|");
+		System.out.println("\t\t|---3----------CurrentP---|");
+		System.out.println("\t\t|---4----------FieldData--|");
+		System.out.println("\t\t|---5----------GameState--|");
+		System.out.println("\t\t|©©©©©©©©©©©©©©©©©©©©©©©©©|");
+		System.out.println("\t\t|_________________________|");
+	}
+	
+	
+
+}

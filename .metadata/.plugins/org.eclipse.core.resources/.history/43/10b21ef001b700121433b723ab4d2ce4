@@ -1,0 +1,5 @@
+package game2;
+
+public class C_Toe_Game implements I_Toe_Game{
+
+}

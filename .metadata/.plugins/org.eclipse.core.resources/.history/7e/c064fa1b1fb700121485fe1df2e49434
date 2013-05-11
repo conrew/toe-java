@@ -1,0 +1,123 @@
+package game2;
+
+public class C_Toe_Game implements I_Toe_Game{
+	
+	//Variables
+	private int GameState = 4;
+	private int CurrentPlayer = 0;
+	@SuppressWarnings("unused")
+	private int GameID = 1000;
+	private int Turns = 0;
+	
+	private long TimeStart = 0;
+	private long TimeEnd	= 0;
+	private long PlayTime = TimeEnd - TimeStart;
+	
+	private int[] field = {0,0,0,0,0,0,0,0,0};
+	
+	public C_Toe_Game(){
+		System.out.println("C_Toe_Game aufgerufen");
+	}
+	
+	//Methoden
+	
+	public boolean doTurn(int FieldID) { //Erledigt	
+		switch(CurrentPlayer){
+		case 1:
+			field[FieldID] = 1;
+			CurrentPlayer = 2;
+			System.out.println("Player "+ CurrentPlayer +" done Turn");
+			return true;
+		case 2:
+			field[FieldID] = 1;
+			CurrentPlayer = 1;
+			System.out.println("Player " + CurrentPlayer + " done Turn");
+			return true;
+		default:
+			System.out.println("Turn ended uncorrectly");
+			return false;
+		}
+		
+	}
+	
+	private void update(){
+		
+	}
+	
+	public boolean revokeTurn(int FieldID) {	
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Create New Game
+	public boolean NewGame() { //Erledigt
+		switch(GameState){
+		case 4:				//Kein Spiel
+		case 2:				//Spieler 2 gewinnt
+		case 1:				//Spieler 1 gewinnt
+		case 3:				//Unentschieden
+			
+			//Feld zurücksetzen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			
+			//Zufalls zahlen
+			CurrentPlayer = (int)(Math.random()*2 + 1);
+			GameID = (int)(Math.random()*1000 + 1);
+			TimeStart = System.currentTimeMillis();
+			
+			return true;
+			
+		default:
+			System.out.println("Game could not be created! Error");
+			return false;
+		}
+	}
+
+	
+	public boolean NewGame(int GameIDU) { //Erledigt
+		switch(GameState){
+		case 4:				//Kein Spiel
+		case 2:				//Spieler 2 gewinnt
+		case 1:				//Spieler 1 gewinnt
+		case 3:				//Unentschieden
+			
+			//Feld zurücksetzen
+			for(int fi : field){
+				field[fi] = 0;
+			}
+			
+			//Zufalls zahlen
+			CurrentPlayer = (int)(Math.random()*2 + 1);
+			GameID = GameIDU;
+			TimeStart = System.currentTimeMillis();
+			
+			return true;
+			
+		default:
+			System.out.println("Game could not be created! Error");
+			return false;
+		}
+	}
+
+	//Load a Game
+	public boolean LoadGame() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Save a Game
+	public boolean SaveGame() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//Get Methoden - Erledigt
+	public int getGameState() {return GameState;}
+	public int getCurrentPlayer() {return CurrentPlayer;}
+	public int getTurns() {return Turns;}
+	public float getPlayTime() {return PlayTime;}
+	public int[] getField() {return field;}
+
+}

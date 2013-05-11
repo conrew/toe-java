@@ -1,0 +1,14 @@
+package game2;
+
+public class Toe_Console {
+
+	public static void main(String[] args) {	
+		System.out.println("\t\t___________________________");
+		System.out.println("\t\t|--Tic Tac Toe | Console--|");
+		System.out.println("\t\t|-------------------------|");
+		System.out.println("\t\t|--------Commands---------|");
+		System.out.println("\t\t|_________________________|");
+		
+	}
+
+}
